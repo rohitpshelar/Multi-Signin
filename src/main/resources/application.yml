@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            #  [System.Environment]::GetEnvironmentVariables()
+            #  [System.Environment]::SetEnvironmentVariable("GOOGLE_CLIENT_ID","***") ALSO in GitHub secrete use same way to access "${GOOGLE_CLIENT_ID}"
+            #  [System.Environment]::SetEnvironmentVariable("GOOGLE_CLIENT_SECRET","***")
+            client-id: "${GOOGLE_CLIENT_ID}"
+            client-secret: "${GOOGLE_CLIENT_SECRET}"
+
+  data:
+    mongodb:
+      uri: mongodb+srv://rohitpshelar:6CJTeZivuMldVRwI@microservice.bsacm.mongodb.net/?retryWrites=true&w=majority&appName=Microservice
+      port: 27017
+      database: RatingDB
+#client-id: "${GOOGLE_CLIENT_ID}"
+#client-secret: "${GOOGLE_CLIENT_SECRET}"
+
+
