@@ -16,7 +16,7 @@ public class SpringSecurity {
         http
                 .authorizeHttpRequests((requests) -> requests
 //                        .anyRequest().authenticated()
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
                 ).oauth2Login(Customizer.withDefaults());
 //                .logout(LogoutConfigurer::permitAll);
 

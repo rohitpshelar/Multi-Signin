@@ -87,4 +87,10 @@ public class GoogleAuthController {
             throw new RuntimeException(e);
         }
     }
+
+    @GetMapping(path = {"/login/oauth2/code/github"})
+    public ResponseEntity<?> githubCallBackUrl(@RequestParam String code){
+        System.out.println(code);
+        return ResponseEntity.ok("Success");
+    }
 }
