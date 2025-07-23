@@ -13,26 +13,26 @@ spring:
             #  [System.Environment]::SetEnvironmentVariable("GOOGLE_CLIENT_ID","----", "Machine")
             #       ALSO in keep and use same way to access from GitHub "${GOOGLE_CLIENT_ID}"
             #  [System.Environment]::SetEnvironmentVariable("GOOGLE_CLIENT_SECRET","----", "Machine")
-            client-id: ${GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET}
+            client-id: ${GOOGLE_CLIENT_ID:__GOOGLE_CLIENT_ID__}  # Fallback to placeholder
+            client-secret: ${GOOGLE_CLIENT_SECRET:__GOOGLE_CLIENT_SECRET__}
           github:
             #  [System.Environment]::SetEnvironmentVariable("GITTHUB_CLIENT_ID","----", "Machine")
             #  [System.Environment]::SetEnvironmentVariable("GITTHUB_CLIENT_SECRET","----", "Machine")
-            client-id: "${GITTHUB_CLIENT_ID}"
-            client-secret: "${GITTHUB_CLIENT_SECRET}"
+            client-id: ${GITHUB_CLIENT_ID:__GITHUB_CLIENT_ID__}
+            client-secret: ${GITHUB_CLIENT_SECRET:__GITHUB_CLIENT_SECRET__}
           facebook:
             #  [System.Environment]::SetEnvironmentVariable("FACEBOOK_CLIENT_ID","", "Machine")
             #  [System.Environment]::SetEnvironmentVariable("FACEBOOK_CLIENT_SECRET"," ", "Machine")
-            client-id: "${FACEBOOK_CLIENT_ID}"
-            client-secret: "${FACEBOOK_CLIENT_SECRET}"
+            client-id: ${FACEBOOK_CLIENT_ID:__FACEBOOK_CLIENT_ID__}
+            client-secret: ${FACEBOOK_CLIENT_SECRET:__FACEBOOK_CLIENT_SECRET__}
 
   data:
     mongodb:
       #  [System.Environment]::SetEnvironmentVariable("MONGODB_UN","----", "Machine")
       #  [System.Environment]::SetEnvironmentVariable("MONGODB_PW","----", "Machine")
       uri: mongodb+srv://microservice.bsacm.mongodb.net/?retryWrites=true&w=majority&appName=Microservice
-      username: "${MONGODB_UN}"
-      password: "${MONGODB_PW}"
+      username: "${MONGODB_UN:__MONGODB_UN__}"
+      password: "${MONGODB_PW:__MONGODB_PW__}"
       port: 27017
       database: RatingDB
 #client-id: "${GOOGLE_CLIENT_ID}"

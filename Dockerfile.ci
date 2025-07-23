@@ -1,10 +1,12 @@
-ARG GOOGLE_CLIENT_ID
-ARG GOOGLE_CLIENT_SECRET
+# Create a stage for processing configuration
+FROM alpine as config-processor
+RUN apk add --no-cache gettext
+COPY src/main/resources/application.yml /tmp/
+RUN envsubst < /tmp/application.yml > /tmp/application-processed.yml
 
-ENV GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID} \
-    GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET} \
 From openjdk:21
 EXPOSE 8080
 RUN mkdir /app
+COPY --from=config-processor /tmp/application-processed.yml /app/config/application.yml
 COPY build/libs/*.jar /app/multi-signin.jar
 ENTRYPOINT ["java","-jar","/app/multi-signin.jar"]

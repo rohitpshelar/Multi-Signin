@@ -36,8 +36,19 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
+    - name: Inject secrets into configuration
+      run: |
+        sed -i "s|__GOOGLE_CLIENT_ID__|${{ secrets.GOOGLE_CLIENT_ID }}|g" src/main/resources/application.yml
+        sed -i "s|__GOOGLE_CLIENT_SECRET__|${{ secrets.GOOGLE_CLIENT_SECRET }}|g" src/main/resources/application.yml
+        sed -i "s|__GITHUB_CLIENT_ID__|${{ secrets.GITHUB_CLIENT_ID }}|g" src/main/resources/application.yml
+        sed -i "s|__GITHUB_CLIENT_SECRET__|${{ secrets.GITHUB_CLIENT_SECRET }}|g" src/main/resources/application.yml
+        sed -i "s|__FACEBOOK_CLIENT_ID__|${{ secrets.FACEBOOK_CLIENT_ID }}|g" src/main/resources/application.yml
+        sed -i "s|__FACEBOOK_CLIENT_SECRET__|${{ secrets.FACEBOOK_CLIENT_SECRET }}|g" src/main/resources/application.yml
+        sed -i "s|__MONGODB_UN__|${{ secrets.MONGODB_UN }}|g" src/main/resources/application.yml
+        sed -i "s|__MONGODB_PW__|${{ secrets.MONGODB_PW }}|g" src/main/resources/application.yml
+      
 
-    # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
+      # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
