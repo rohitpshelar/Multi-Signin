@@ -14,12 +14,20 @@ public class SpringSecurity {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((requests) -> requests
-//                        .anyRequest().authenticated()
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/login", "/logout", "/webjars/**", "/css" +
+                                "/**").permitAll()
                         .anyRequest().authenticated()
-                ).oauth2Login(Customizer.withDefaults());
-//                .logout(LogoutConfigurer::permitAll);
-
+                )
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/home", true)
+                        .failureUrl("/error?error=Login failed")
+                ).logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                );
         return http.build();
     }
 

@@ -39,10 +39,10 @@ public class GoogleAuthController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/")
-    public String welcome(){
-        return "Welcome!";
-    }
+//    @GetMapping("/")
+//    public String welcome(){
+//        return "Welcome!";
+//    }
 
     @GetMapping(path = {"/auth/google/callback", "/login/oauth/code/google", "/login/oauth2/code/google"})
     public ResponseEntity<?> googleCallBackUrl(@RequestParam String code){
@@ -88,7 +88,7 @@ public class GoogleAuthController {
         }
     }
 
-    @GetMapping(path = {"/login/oauth2/code/github"})
+    @GetMapping(path = {"/login/oauth2/code/github", "/api/v1/security/oauth/github/callback", "/auth/github/callback"})
     public ResponseEntity<?> githubCallBackUrl(@RequestParam String code){
         System.out.println(code);
         return ResponseEntity.ok("Success");
