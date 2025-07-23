@@ -21,10 +21,10 @@ spring:
             client-id: "${GITTHUB_CLIENT_ID}"
             client-secret: "${GITTHUB_CLIENT_SECRET}"
           facebook:
-            #  [System.Environment]::SetEnvironmentVariable("FACEBOOK_CLIENT_ID","1390771845368993", "Machine")
-            #  [System.Environment]::SetEnvironmentVariable("FACEBOOK_CLIENT_SECRET","c899144707d4dade3aed2183adf5b195 ", "Machine")
-            client-id: "1390771845368993"
-            client-secret: "c899144707d4dade3aed2183adf5b195"
+            #  [System.Environment]::SetEnvironmentVariable("FACEBOOK_CLIENT_ID","", "Machine")
+            #  [System.Environment]::SetEnvironmentVariable("FACEBOOK_CLIENT_SECRET"," ", "Machine")
+            client-id: "${FACEBOOK_CLIENT_ID}"
+            client-secret: "${FACEBOOK_CLIENT_SECRET}"
 
   data:
     mongodb:
