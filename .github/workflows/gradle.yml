@@ -35,6 +35,15 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
+      env:
+        GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+        GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+        GITTHUB_CLIENT_ID: ${{ secrets.GITTHUB_CLIENT_ID }}
+        GITTHUB_CLIENT_SECRET: ${{ secrets.GITTHUB_CLIENT_SECRET }}
+        FACEBOOK_CLIENT_ID: ${{ secrets.FACEBOOK_CLIENT_ID }}
+        FACEBOOK_CLIENT_SECRET: ${{ secrets.FACEBOOK_CLIENT_SECRET }}
+        MONGODB_UN: ${{ secrets.MONGODB_UN }}
+        MONGODB_PW: ${{ secrets.MONGODB_PW }}
 
       # DOcker config
     - uses: mr-smithers-excellent/docker-build-push@v6

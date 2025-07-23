@@ -11,29 +11,29 @@ spring:
             #  ** PowerShell Admin **
             #  [System.Environment]::GetEnvironmentVariables()
             #  [System.Environment]::SetEnvironmentVariable("GOOGLE_CLIENT_ID","----", "Machine")
-            #       ALSO in keep and use same way to access from GitHub ${{ secrets.GOOGLE_CLIENT_ID}}
+            #       ALSO in keep and use same way to access from GitHub "${GOOGLE_CLIENT_ID}"
             #  [System.Environment]::SetEnvironmentVariable("GOOGLE_CLIENT_SECRET","----", "Machine")
-            client-id: ${{ secrets.GOOGLE_CLIENT_ID}}
-            client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET}}
+            client-id: "${GOOGLE_CLIENT_ID}"
+            client-secret: "${GOOGLE_CLIENT_SECRET}"
           github:
             #  [System.Environment]::SetEnvironmentVariable("GITTHUB_CLIENT_ID","----", "Machine")
             #  [System.Environment]::SetEnvironmentVariable("GITTHUB_CLIENT_SECRET","----", "Machine")
-            client-id: ${{ secrets.GITTHUB_CLIENT_ID}}
-            client-secret: ${{ secrets.GITTHUB_CLIENT_SECRET}}
+            client-id: "${GITTHUB_CLIENT_ID}"
+            client-secret: "${GITTHUB_CLIENT_SECRET}"
           facebook:
             #  [System.Environment]::SetEnvironmentVariable("FACEBOOK_CLIENT_ID","", "Machine")
             #  [System.Environment]::SetEnvironmentVariable("FACEBOOK_CLIENT_SECRET"," ", "Machine")
-            client-id: ${{ secrets.FACEBOOK_CLIENT_ID}}
-            client-secret: ${{ secrets.FACEBOOK_CLIENT_SECRET}}
+            client-id: "${FACEBOOK_CLIENT_ID}"
+            client-secret: "${FACEBOOK_CLIENT_SECRET}"
 
   data:
     mongodb:
       #  [System.Environment]::SetEnvironmentVariable("MONGODB_UN","----", "Machine")
       #  [System.Environment]::SetEnvironmentVariable("MONGODB_PW","----", "Machine")
       uri: mongodb+srv://microservice.bsacm.mongodb.net/?retryWrites=true&w=majority&appName=Microservice
-      username: ${{ secrets.MONGODB_UN}}
-      password: ${{ secrets.MONGODB_PW}}
+      username: "${MONGODB_UN}"
+      password: "${MONGODB_PW}"
       port: 27017
       database: RatingDB
-#client-id: ${{ secrets.GOOGLE_CLIENT_ID}}
-#client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET}}
+#client-id: "${GOOGLE_CLIENT_ID}"
+#client-secret: "${GOOGLE_CLIENT_SECRET}"
