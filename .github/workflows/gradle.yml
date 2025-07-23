@@ -44,17 +44,47 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
+      env:
+        GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+        GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+        GITTHUB_CLIENT_ID: ${{ secrets.GITTHUB_CLIENT_ID }}
+        GITTHUB_CLIENT_SECRET: ${{ secrets.GITTHUB_CLIENT_SECRET }}
+        FACEBOOK_CLIENT_ID: ${{ secrets.FACEBOOK_CLIENT_ID }}
+        FACEBOOK_CLIENT_SECRET: ${{ secrets.FACEBOOK_CLIENT_SECRET }}
+        MONGODB_UN: ${{ secrets.MONGODB_UN }}
+        MONGODB_PW: ${{ secrets.MONGODB_PW }}
 
       # DOcker config
     - uses: mr-smithers-excellent/docker-build-push@v6
+      env:
+        GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+        GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+        GITTHUB_CLIENT_ID: ${{ secrets.GITTHUB_CLIENT_ID }}
+        GITTHUB_CLIENT_SECRET: ${{ secrets.GITTHUB_CLIENT_SECRET }}
+        FACEBOOK_CLIENT_ID: ${{ secrets.FACEBOOK_CLIENT_ID }}
+        FACEBOOK_CLIENT_SECRET: ${{ secrets.FACEBOOK_CLIENT_SECRET }}
+        MONGODB_UN: ${{ secrets.MONGODB_UN }}
+        MONGODB_PW: ${{ secrets.MONGODB_PW }}
       name: Build & push Docker image
       with:
         image: rohitpshelar/multi-signin
-        tags: v1, latest
+        tags: latest
         registry: docker.io
         dockerfile: Dockerfile.ci
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        build-args: |
+          GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GITHUB_CLIENT_ID=${{ secrets.GITHUB_CLIENT_ID }}
+          GITHUB_CLIENT_SECRET=${{ secrets.GITHUB_CLIENT_SECRET }}
+          FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }}
+          FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }}
+          MONGODB_UN=${{ secrets.MONGODB_UN }}
+          MONGODB_PW=${{ secrets.MONGODB_PW }}
+
+    - name: Debug env vars
+      run: echo "MONGODB_UN=$MONGODB_UN"  # Will show as '***' in logs
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
