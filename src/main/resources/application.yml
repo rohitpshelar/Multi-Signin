@@ -13,8 +13,8 @@ spring:
             #  [System.Environment]::SetEnvironmentVariable("GOOGLE_CLIENT_ID","----", "Machine")
             #       ALSO in keep and use same way to access from GitHub "${GOOGLE_CLIENT_ID}"
             #  [System.Environment]::SetEnvironmentVariable("GOOGLE_CLIENT_SECRET","----", "Machine")
-            client-id: "${GOOGLE_CLIENT_ID}"
-            client-secret: "${GOOGLE_CLIENT_SECRET}"
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
           github:
             #  [System.Environment]::SetEnvironmentVariable("GITTHUB_CLIENT_ID","----", "Machine")
             #  [System.Environment]::SetEnvironmentVariable("GITTHUB_CLIENT_SECRET","----", "Machine")
