@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to the Home Page!</h1>
+    <p>You have successfully logged in.</p>
+    <span th:if="${img}"><img th:src="${img}" alt="Image" width="90" height="90"></span>
+    <span th:if="${user}"><p><strong>User :</strong> <span th:text="${user}"></span></p></span>
+    <span th:if="${email}"><p><strong>Email :</strong> <span th:text="${email}"></span></p></span>
+    <span th:if="${profileLink}"><p><strong>Profile Link :</strong> <a th:href="${profileLink}">Access Profile</a></p></span>
+    <span th:if="${repos}"><p><strong>Repositories :</strong> <span th:text="${repos}"></span></p></span>
+    <a href="/logout" class="btn btn-danger">Logout</a>
+</div>
+</body>
+</html>

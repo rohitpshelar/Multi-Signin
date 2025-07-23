@@ -1,0 +1,5 @@
+From openjdk:21
+EXPOSE 8080
+RUN mkdir /app
+COPY build/libs/*.jar /app/multi-signin.jar
+ENTRYPOINT ["java","-jar","/app/multi-signin.jar"]
